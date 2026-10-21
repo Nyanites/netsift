@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # eframe, egui and egui_extras must always share one version; update them together.
+      egui:
+        patterns: ["eframe", "egui", "egui_extras", "egui-*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

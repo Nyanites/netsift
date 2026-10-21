@@ -1,0 +1,5 @@
+/target
+/.idea/
+.DS_Store
+# Raw captures from real machines: keep them out of version control.
+/samples/

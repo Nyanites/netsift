@@ -1,0 +1,23 @@
+# NetSift
+
+> NetSift is a desktop packet analyzer for macOS and Linux: live capture and pcap/pcapng files, live decryption of HTTPS, HTTP/2 and HTTP/3 from SSLKEYLOGFILE key logs, per-app traffic attribution, an HTTP request waterfall with HAR export, and capture comparison. Part of the Cydra Suite by Cydraintel.
+
+- Platforms: macOS 11 or newer (Apple Silicon and Intel), Linux x64 and ARM64 (glibc 2.35+). Windows is planned (needs Npcap).
+- Capture: live capture via libpcap with BPF capture filters; opens pcap and pcapng; saves pcap.
+- Decryption: TLS 1.2 (AES-GCM, ChaCha20-Poly1305) and TLS 1.3 including key updates; QUIC v1 and v2 with header protection, coalesced packets and 1-RTT key updates; QUIC Initial packets decrypt without keys; Encrypted Client Hello (ECH) sessions; key log re-read automatically.
+- HTTP: HTTP/1.x, HTTP/2 (HPACK) and HTTP/3 (QPACK with dynamic table) decoded and filterable; request waterfall with connection setup, wait and download; HAR 1.2 export.
+- Per-app traffic: each connection attributed to its local process during live capture (macOS PKTAP metadata plus socket table, Linux /proc); no root needed for the user's own processes; filters process, app, pid.
+- Compare: matches packets between two captures on ports, TCP sequence numbers, flags and payload; reports missing and new packets and the delay between capture points; filter compare.missing.
+- Search: Wireshark-style display filters evaluated in parallel; 8-73 ms per search over 1.03 million packets once loaded (Apple M4 Pro).
+- Insights: retransmissions, resets, zero windows, DNS and HTTP errors, TLS alerts.
+- CLI: netsift query, sessions, http, har, diff; -w writes matching packets to pcap.
+- Runs locally: no telemetry, no account, no update check.
+- License: PolyForm Small Business 1.0.0 (free for organizations under 100 people and US$1M revenue).
+- Install on macOS or Linux: `curl -fsSL https://nyanites.github.io/netsift/install.sh | sh`
+
+## Links
+
+- [Website](https://nyanites.github.io/netsift/)
+- [Source code and documentation](https://github.com/Nyanites/netsift)
+- [Releases](https://github.com/Nyanites/netsift/releases)
+- [Cydra Suite](https://nyanites.github.io/)

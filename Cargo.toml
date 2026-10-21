@@ -1,0 +1,43 @@
+[package]
+name = "netsift"
+version = "0.1.0"
+edition = "2024"
+description = "NetSift - packet analyzer with live capture, HTTPS/HTTP-2/HTTP-3 decryption and per-app attribution"
+license-file = "LICENSE.md"
+repository = "https://github.com/Nyanites/netsift"
+homepage = "https://nyanites.github.io/netsift/"
+publish = false
+
+[dependencies]
+aes = "0.9"
+aes-gcm = "0.11.1"
+chacha20 = "0.10"
+chacha20poly1305 = "0.11.0"
+crossbeam-channel = "0.5.17"
+eframe = "0.37.0"
+egui_extras = "0.37.0"
+hmac = "0.13.0"
+pcap = "2.5.0"
+png = "0.18"
+rfd = "0.17.2"
+sha2 = "0.11.1"
+
+[dev-dependencies]
+bytes = "1.12.1"
+h2 = "0.4.20"
+h3 = "0.0.8"
+h3-quinn = "0.0.10"
+http = "1.5.0"
+quinn = { version = "0.11.12", default-features = false, features = ["rustls-ring", "runtime-tokio"] }
+quinn-proto = { version = "0.11.19", default-features = false, features = ["rustls-ring"] }
+rcgen = "0.14.10"
+rustls = { version = "0.23.46", default-features = false, features = ["ring", "std", "tls12"] }
+tokio = { version = "1.54.0", features = ["rt", "macros", "io-util", "time", "rt-multi-thread", "net", "sync"] }
+
+[build-dependencies]
+cc = "1.9.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
