@@ -114,7 +114,7 @@ mod platform {
     use super::*;
 
     pub fn snapshot() -> Result<Snapshot, String> {
-        let mut by_inode: HashMap<u64, (u8, (IpAddr, u16), Option<(IpAddr, u16)>)> = HashMap::new();
+        let mut by_inode: HashMap<u64, (u8, Ep, Option<Ep>)> = HashMap::new();
         for (file, proto) in [("tcp", 6u8), ("tcp6", 6), ("udp", 17), ("udp6", 17)] {
             if let Ok(text) = std::fs::read_to_string(format!("/proc/net/{file}")) {
                 for (inode, local, remote) in parse_proc_net(&text) {
